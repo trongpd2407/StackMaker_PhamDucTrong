@@ -13,7 +13,7 @@ public class Constant
 
     public const float MAX_DISTANCE = 1f;
 
-
+    public const int MAX_LEVEL = 5;
     //Directions
     public static readonly Quaternion RIGHT_DIRECTION = Quaternion.Euler(0, 90, 0);
     public static readonly Quaternion LEFT_DIRECTION = Quaternion.Euler(0, -90, 0);

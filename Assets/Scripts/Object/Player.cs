@@ -20,8 +20,6 @@ public class Player : MonoBehaviour
 
     [SerializeField] private GameObject brickPrefab;
 
-    private int maxLevel = 5;
-    private int currentLevel = 1;
 
     private Stack<GameObject> stackBrick;
 
@@ -32,12 +30,13 @@ public class Player : MonoBehaviour
 
     private bool isMoving;
 
-    void Start()
+    public void OnInIt()
     {
         playerTransform.position = beginPos.position;
         stackBrick = new Stack<GameObject>();
         stackBrick.Clear();
     }
+   
     private void Update()
     {
         ChangeDirection();
@@ -113,6 +112,7 @@ public class Player : MonoBehaviour
             isMoving = true;
             target = hit.transform.position + new Vector3(0, 2.5f, 6f);
             playerTransform.position = Vector3.MoveTowards(playerTransform.position, target, Constant.WIN_DISTANCE );
+            GameManger.Instance.WinLevel();
         }
         else
         {
@@ -143,16 +143,6 @@ public class Player : MonoBehaviour
         playerVisualTransform.position -= Constant.BRICK_HEIGHT;
     }
     
-    public void NextLevel()
-    {
-        if(currentLevel < maxLevel)
-            currentLevel++;
-    }
-    public int GetCurrentLevel()
-    {
-        return currentLevel;
-    }
-
 
 }
 
