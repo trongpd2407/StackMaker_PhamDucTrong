@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &441245642431522798
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3472700719854124496}
+  - component: {fileID: 2896942694909247095}
+  m_Layer: 0
+  m_Name: Level
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3472700719854124496
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 441245642431522798}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2896942694909247095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 441245642431522798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09f622eed516584fa8acb486eea0122, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapCSV:
+  - {fileID: 4900000, guid: a3d6526b4b053364294833cb64e45f83, type: 3}
+  - {fileID: 4900000, guid: 22ed2f5ea4b996644a88e0d72d8f3197, type: 3}
+  - {fileID: 4900000, guid: 9624cf5e2128feb4e8069d3404f936aa, type: 3}
+  - {fileID: 4900000, guid: 8879d8a46f47bdb4ca6c394b97b779dc, type: 3}
+  - {fileID: 4900000, guid: eaf74fd618de5d548a3a5892417992d5, type: 3}
+  currentLevel: 2
+  brickPrefab: {fileID: 1045506591760351, guid: f206ccc114e101b4dafffd4915d4a812, type: 3}
+  wallPrefab: {fileID: 1121066348938118, guid: 680fafd85c16f024192891099b1460ee, type: 3}
+  brigdePrefab: {fileID: 5955658329979336429, guid: 106728c210ac05a45b735612ce27de01, type: 3}
+  winPosition: {fileID: 1377060364527856, guid: bec8fbf23e70b4f42b574dddd6681a4c, type: 3}
+  levelTransform: {fileID: 3472700719854124496}

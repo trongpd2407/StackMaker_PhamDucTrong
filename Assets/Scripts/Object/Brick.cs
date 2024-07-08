@@ -17,10 +17,6 @@ public class Brick : MonoBehaviour
         }
             
     }
-    void Start()
-    {
-    }
-
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.S)) {
@@ -47,11 +43,7 @@ public class Brick : MonoBehaviour
             }
             DisableMesh();
             player.IncreaseBrick();
-
-
-
         }
     }
-
 
 }
