@@ -4,21 +4,13 @@ using UnityEngine;
 
 public class WinPos : MonoBehaviour
 {
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("triiger");
         if(other.CompareTag(Constant.TAG_PLAYER))
         {
-            Player player = other.gameObject.GetComponent<Player>();
-            player.NextLevel();
+            Debug.Log("plauer");
+          
         }
     }
 }

@@ -4,49 +4,23 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 //TODO
-public class LevelManager : MonoBehaviour
+public class LevelManager : Singleton<LevelManager>
 {
-    private LevelManager ins;
-    public LevelManager Instance
-    {
-        get
-        {
-            if (ins == null)
-            {
-                ins = FindObjectOfType<LevelManager>();
 
-                if (ins == null)
-                {
-                    GameObject singleton = new GameObject(typeof(LevelManager).Name);
-                    ins = singleton.AddComponent<LevelManager>();
-                }
-            }
-            return ins;
-        }
-    }
     public TextAsset[] mapCSV;
-    private int currentLevel = 0;
     int[,] levelInt;
     public GameObject brickPrefab;
     public GameObject wallPrefab;
     public GameObject brigdePrefab;
     public GameObject winPosition;
     public Transform levelTransform;
-    void Awake()
-    {
-        LoadLevel(0);
-        if (ins == null)
-        {
-            ins = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else if (ins != this)
-        {
-            Destroy(gameObject);
-        }
-    }
+
     public void LoadLevel(int currentLevel)
     {
+        foreach (Transform child in levelTransform)
+        {
+            Destroy(child.gameObject);
+        }
         string[] line = mapCSV[currentLevel].text.Split('\n');
         int levelSize = line.Length;
         levelInt = new int[levelSize, levelSize];
