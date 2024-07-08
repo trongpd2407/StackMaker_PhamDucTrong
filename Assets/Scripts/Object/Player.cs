@@ -16,9 +16,13 @@ public class Player : MonoBehaviour
 
     [SerializeField] private LayerMask brickLayer;
 
+    [SerializeField] private LayerMask winLayer;
+
     [SerializeField] private GameObject brickPrefab;
 
-    
+    private int maxLevel = 5;
+    private int currentLevel = 1;
+
     private Stack<GameObject> stackBrick;
 
     private Vector2 startSwipePos;
@@ -28,9 +32,6 @@ public class Player : MonoBehaviour
 
     private bool isMoving;
 
-    public void OnInIt()
-    {
-    }
     void Start()
     {
         playerTransform.position = beginPos.position;
@@ -73,22 +74,22 @@ public class Player : MonoBehaviour
         {
             if (swipeDirection.x > 0)
             {
-                checkPosTransform.rotation = Quaternion.Euler(0, 90, 0);
+                checkPosTransform.rotation = Constant.RIGHT_DIRECTION;
             }
             else
             {
-                checkPosTransform.rotation = Quaternion.Euler(0, -90, 0);
+                checkPosTransform.rotation = Constant.LEFT_DIRECTION;
             }
         }
         else
         {
             if (swipeDirection.y > 0)
             {
-                checkPosTransform.rotation = Quaternion.Euler(0, 0, 0);
+                checkPosTransform.rotation = Constant.FORWARD_DIRECTION;
             }
             else
             {
-                checkPosTransform.rotation = Quaternion.Euler(0, 180, 0);
+                checkPosTransform.rotation = Constant.BACK_DIRECTION;
             }
         }
         
@@ -104,8 +105,14 @@ public class Player : MonoBehaviour
         {
             isMoving = true;
             target = hit.transform.position + new Vector3(0, 2.5f, 0);
-            playerTransform.position = Vector3.MoveTowards(playerTransform.position, target, Constant.PLAYER_SPEED * Time.deltaTime);
+            playerTransform.position = Vector3.MoveTowards(playerTransform.position, target, Constant.MAX_DISTANCE);
 
+        }
+        else if(Physics.Raycast(checkPosTransform.position, checkPosTransform.forward, out hit, Constant.CHECK_BRICK_LENGTH, winLayer))
+        {
+            isMoving = true;
+            target = hit.transform.position + new Vector3(0, 2.5f, 6f);
+            playerTransform.position = Vector3.MoveTowards(playerTransform.position, target, Constant.WIN_DISTANCE );
         }
         else
         {
@@ -114,7 +121,10 @@ public class Player : MonoBehaviour
      
     }
 
-
+    public int GetBrickCount()
+    {
+        return stackBrick.Count;
+    }
 
 
     public void IncreaseBrick()
@@ -133,6 +143,15 @@ public class Player : MonoBehaviour
         playerVisualTransform.position -= Constant.BRICK_HEIGHT;
     }
     
+    public void NextLevel()
+    {
+        if(currentLevel < maxLevel)
+            currentLevel++;
+    }
+    public int GetCurrentLevel()
+    {
+        return currentLevel;
+    }
 
 
 }

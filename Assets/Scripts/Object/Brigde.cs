@@ -6,17 +6,10 @@ public class Brigde : MonoBehaviour
 {
     private bool isBuilt;
 
-
-
     [SerializeField] private MeshRenderer brickRenderer;
-
-    void Start()
+    private void Start()
     {
-    }
-
-    void Update()
-    {
-        
+        brickRenderer.enabled = false;
     }
     public void EnableMesh()
     {
@@ -34,6 +27,10 @@ public class Brigde : MonoBehaviour
             if(player == null || isBuilt)
             {
                 return;
+            }
+            if (player.GetBrickCount() <= 0)
+            {
+                return ;
             }
             EnableMesh();
             player.DecreaseBrick();
