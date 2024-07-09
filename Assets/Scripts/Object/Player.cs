@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
 
     [SerializeField] private GameObject brickPrefab;
 
+    [SerializeField] private Animator animator;
 
     private Stack<GameObject> stackBrick;
 
@@ -27,7 +28,7 @@ public class Player : MonoBehaviour
     private Vector2 endSwipePos;
     private Vector2 swipeDirection;
     private Vector3 target;
-
+    private bool isWinning;
     private bool isMoving;
 
     public void OnInIt()
@@ -35,6 +36,8 @@ public class Player : MonoBehaviour
         playerTransform.position = beginPos.position;
         stackBrick = new Stack<GameObject>();
         stackBrick.Clear();
+        isWinning = false;  
+        animator.SetInteger("taketype", 0);
     }
    
     private void Update()
@@ -44,7 +47,14 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
-
+        if (isWinning)
+        {
+            animator.SetInteger("taketype", 2);
+        }
+        else
+        {
+            animator.SetInteger("taketype", 0);
+        }
         Move();
     }
 
@@ -95,6 +105,7 @@ public class Player : MonoBehaviour
     }
     private void Move()
     {
+     
         if (Mathf.Abs(swipeDirection.x) < 0.001f && Mathf.Abs(swipeDirection.y) < 0.001f)
         {
             return;
@@ -105,17 +116,21 @@ public class Player : MonoBehaviour
             isMoving = true;
             target = hit.transform.position + new Vector3(0, 2.5f, 0);
             playerTransform.position = Vector3.MoveTowards(playerTransform.position, target, Constant.MAX_DISTANCE);
+         
 
         }
-        else if(Physics.Raycast(checkPosTransform.position, checkPosTransform.forward, out hit, Constant.CHECK_BRICK_LENGTH, winLayer))
+        else if(Physics.Raycast(checkPosTransform.position, checkPosTransform.forward, out hit, 7f, winLayer))
         {
             isMoving = true;
             target = hit.transform.position + new Vector3(0, 2.5f, 6f);
-            playerTransform.position = Vector3.MoveTowards(playerTransform.position, target, Constant.WIN_DISTANCE );
+            Vector3 direction = target - playerTransform.position;
+            playerTransform.Translate(direction* 5 * Time.deltaTime);
+            isWinning = true;
             GameManger.Instance.WinLevel();
         }
         else
         {
+          
             isMoving = false;
         }
      
@@ -133,7 +148,7 @@ public class Player : MonoBehaviour
         GameObject newBrick = Instantiate(brickPrefab, newBrickPos, brickPrefab.transform.rotation, playerTransform);
         stackBrick.Push(newBrick);
         playerVisualTransform.position = playerTransform.position + Constant.VISUAL_OFFSET + Constant.BRICK_HEIGHT * stackBrick.Count;
-     
+        animator.SetInteger("taketype", 1);
     }
 
 

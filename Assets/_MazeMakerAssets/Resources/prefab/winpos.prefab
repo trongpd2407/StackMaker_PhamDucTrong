@@ -6074,7 +6074,7 @@ Transform:
   m_GameObject: {fileID: 1095323009806971}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0.7071068, w: 0}
-  m_LocalPosition: {x: 0, y: 2.85, z: 7}
+  m_LocalPosition: {x: 0, y: 2.49, z: 7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -22486,6 +22486,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4157892317022374}
   - component: {fileID: 327112885307642618}
+  - component: {fileID: 4913005144582802933}
   m_Layer: 8
   m_Name: winpos
   m_TagString: Untagged
@@ -22594,8 +22595,22 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 0.34062934, z: 1}
-  m_Center: {x: 0, y: 2.670823, z: 0}
+  m_Size: {x: 1, y: 0.34062958, z: 1.4095817}
+  m_Center: {x: 0, y: 2.670823, z: 6.181137}
+--- !u!114 &4913005144582802933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1377060364527856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b563853a9ce8a9b4eaeca365041f561f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  openChest: {fileID: 1502762753808250}
+  closeChest: {fileID: 1095323009806971}
 --- !u!1 &1382597685722805
 GameObject:
   m_ObjectHideFlags: 0

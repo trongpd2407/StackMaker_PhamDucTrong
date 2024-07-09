@@ -525,8 +525,8 @@ Camera:
   m_GameObject: {fileID: 963194225}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.6881097, g: 0.9548569, b: 0.9622642, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -912,6 +912,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &2052687280 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 95437692088233577, guid: 2e3aa5a52bc69414e82e1433ceee84c5, type: 3}
+  m_PrefabInstance: {fileID: 604200639}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2125544525
 GameObject:
   m_ObjectHideFlags: 0
@@ -971,6 +976,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   brickPrefab: {fileID: 8098704217768444785, guid: 4566e81eaf488964d806a61a7aa3138e, type: 3}
+  animator: {fileID: 2052687280}
 --- !u!65 &2125544528
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -14,7 +14,6 @@ public class GameManger : Singleton<GameManger>
         gameLevel = 0;
         GameState = GameState.MainMenu;
         player.OnInIt();
-        LevelManager.Instance.LoadLevel(gameLevel);
 
     }
 
@@ -27,17 +26,21 @@ public class GameManger : Singleton<GameManger>
     public void StartLevel()
     {
         GameState = GameState.GamePlay;
+        LevelManager.Instance.LoadLevel(gameLevel);
     }
 
     public void WinLevel()
     {
-        Debug.Log("Winn");
         UIManager.Instance.ShowWinUI();
     }
 
     //FIXME: Out out index max level 
     public void NextLevel()
     {   
+        if(gameLevel == Constant.MAX_LEVEL - 1)
+        {
+            return;
+        }
         gameLevel++;
         player.OnInIt();
         LevelManager.Instance.LoadLevel(gameLevel);
